@@ -22,6 +22,14 @@ calc> 2.0 + 2.2
 4.2
 calc> 3 * (4 + 5)
 27.0
+calc> x=45.9
+45.9
+calc> x=x+1
+46.9
+calc> x + 1
+47.9
+calc> x
+46.9
 ```
 
 ## Contributing
