@@ -1,7 +1,7 @@
 # expression     ::= [IDENTIFIER ASSIGNMENT] arithmetic
 # arithmetic     ::= term { PLUS term | MINUS term }
 # term           ::= factor { TIMES factor | DIVIDE factor }
-# factor         ::= LPAREN arithmetic RPAREN | FLOAT_NUM | IDENTIFIER
+# factor         ::= LPAREN arithmetic RPAREN | FLOAT_NUM | IDENTIFIER | MINUS factor
 
 from tokenizer import tokenize
 from nodes import *
@@ -110,6 +110,11 @@ class Parser:
         
         elif current_token_type == "IDENTIFIER":
             return self.__identifier()
+        
+        elif current_token_type == "MINUS":
+            self.__match("MINUS")
+            factor = self.__factor()
+            return NegationNode(factor)
         
         else:
             self.__error()
