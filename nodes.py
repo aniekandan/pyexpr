@@ -13,6 +13,16 @@ class NumberNode(Node):
     def eval(self):
         return float(self.value)
 
+class NegationNode(Node):
+    def __init__(self, operand):
+        self.operand = operand
+
+    def __repr__(self) -> str:
+        return f"-{self.operand}"
+    
+    def eval(self):
+        return - self.operand.eval()
+
 class BinaryOpNode(Node):
     def __init__(self, left, op, right):
         self.left = left
